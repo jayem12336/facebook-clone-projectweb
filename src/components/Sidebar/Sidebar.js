@@ -9,13 +9,16 @@ import PeopleIcon from '@material-ui/icons/People';
 import ChatIcon from '@material-ui/icons/Chat';
 import StorefrontIcon from '@material-ui/icons/Storefront';
 import VideoLibraryIcon from '@material-ui/icons/VideoLibrary';
+import { useStateValue } from '../StateProvider/StateProvider';
 
 export default function Sidebar() {
+
+    const [{ user }, dispatch] = useStateValue();
     return (
         <div className="sidebar">
             <SidebarRow
-                src='https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cGVyc29ufGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80'
-                title='Nico Bronoso'
+                src={user.photoURL}
+                title={user.displayName}
             />
             <SidebarRow Icon={LocalHospitalIcon} title='COVID-19 Information Center' />
             <SidebarRow Icon={EmojiFlagsIcon} title='Pages' />
